@@ -52,16 +52,32 @@
     };
 
     macros {
-        browsertab: browsertab {
+        sign_macro: sign_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&macro_tap>, <&kp DOT &kp N &kp A &kp B>;
+
+            label = "SIGN_MACRO";
+        };
+
+        cal_macro: cal_macro {
             compatible = "zmk,behavior-macro";
             #binding-cells = <0>;
             bindings =
-                <&macro_press>,
-                <&kp LCTRL>,
                 <&macro_tap>,
-                <&kp TAB>,
-                <&macro_release>,
-                <&kp DOT &kp LS(N) &kp LS(A) &kp LS(B)>;
+                <&kp DOT &kp P &kp T &kp C &kp A &kp L &kp LBKT &kp STAR &kp N3>;
+
+            label = "CAL_MACRO";
+        };
+
+        encouraged_macro: encouraged_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings =
+                <&macro_tap>,
+                <&kp DOT &kp E &kp N &kp C &kp O &kp U &kp R &kp A &kp G &kp E &kp D>;
+
+            label = "ENCOURAGED_MACRO";
         };
     };
 
@@ -184,10 +200,10 @@
             // | GUI | CTRL | SHFT | LWR | SPC |   | ENT | RSE  | BKSP | ALT | ESC |
 
             bindings = <
-&kp TAB               &kp Q       &kp W        &kp E       &kp R        &kp T    &kp Y    &kp U        &kp I          &kp O        &kp P          &kp BACKSPACE
-&kp LEFT_PARENTHESIS  &hm LGUI A  &hm LSHFT S  &hm LALT D  &hm LCTRL F  &kp G    &kp H    &hm RCTRL J  &hm RALT K     &hm RSHFT L  &hm RGUI SEMI  &kp APOS
-&kp CAPSLOCK          &kp Z       &kp X        &kp C       &kp V        &kp B    &kp N    &kp M        &kp COMMA      &kp DOT      &kp FSLH       &mo 4
-                                               &kp LGUI    &kp SPACE    &mo 1    &kp RET  &lt 2 SPACE  &kp BACKSPACE
+&kp TAB               &kp Q       &kp W        &kp E       &kp R        &kp T    &kp Y    &kp U        &kp I       &kp O        &kp P          &kp BACKSPACE
+&kp LEFT_PARENTHESIS  &hm LGUI A  &hm LSHFT S  &hm LALT D  &hm LCTRL F  &kp G    &kp H    &hm RCTRL J  &hm RALT K  &hm RSHFT L  &hm RGUI SEMI  &kp APOS
+&kp CAPSLOCK          &kp Z       &kp X        &kp C       &kp V        &kp B    &kp N    &kp M        &kp COMMA   &kp DOT      &kp FSLH       &kp F3
+                                               &kp LGUI    &kp SPACE    &mo 1    &kp RET  &lt 2 SPACE  &mo 4
             >;
         };
 
@@ -201,9 +217,9 @@
             // | GUI | CTRL | SHFT | LWR | SPC |   | ENT | RSE  | BKSP | ALT | ESC |
 
             bindings = <
-&trans  &kp ESC     &trans       &trans             &kp END          &kp HOME         &kp N6   &kp N7        &kp N8       &kp N9        &kp N0            &trans
-&trans  &hm LGUI A  &hm LSHFT S  &hm LALT UP_ARROW  &hm LCTRL DEL    &kp PAGE_UP      &kp N0   &hm RCTRL N4  &hm RALT N5  &hm RSHFT N6  &hm RGUI PAGE_UP  &trans
-&trans  &kp DEL     &kp LEFT     &kp DOWN           &kp RIGHT_ARROW  &kp PAGE_DOWN    &trans   &kp N1        &kp N2       &kp N3        &kp PAGE_DOWN     &trans
+&trans  &kp ESC     &trans       &trans             &kp END          &kp HOME         &kp N6   &kp N7        &kp N8       &kp N9        &kp N0            &sign_macro
+&trans  &hm LGUI A  &hm LSHFT S  &hm LALT UP_ARROW  &hm LCTRL DEL    &kp PAGE_UP      &kp N0   &hm RCTRL N4  &hm RALT N5  &hm RSHFT N6  &hm RGUI PAGE_UP  &cal_macro
+&trans  &kp DEL     &kp LEFT     &kp DOWN           &kp RIGHT_ARROW  &kp PAGE_DOWN    &trans   &kp N1        &kp N2       &kp N3        &kp PAGE_DOWN     &encouraged_macro
                                  &kp LGUI           &kp SPACE        &trans           &kp RET  &mo 3         &trans
             >;
         };
